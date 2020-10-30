@@ -1,12 +1,12 @@
-bind[swap_main] ---------------------------------- MOD+Tab
+bind[stack_dec] ---------------------------------- MOD+Shift+period
+bind[stack_inc] ---------------------------------- MOD+Shift+comma
+bind[stack_reset] ---------------------------------- MOD+Shift+space
 bind[swap_next] ---------------------------------- MOD+Shift+j
 bind[swap_prev] ---------------------------------- MOD+Shift+k
 bind[uniconify] ---------------------------------- MOD+Shift+w
 bind[version] ---------------------------------- MOD+Shift+v
 bind[width_grow] ---------------------------------- MOD+equal
 bind[width_shrink] ---------------------------------- MOD+minus
-bind[wind_del] ---------------------------------- MOD+q
-bind[wind_kill] ---------------------------------- MOD+Shift+x
 bind[ws_1] ---------------------------------- Mod1+n
 bind[ws_2] ---------------------------------- Mod1+m
 bind[ws_3] ---------------------------------- Mod1+comma
