@@ -1,5 +1,19 @@
 #!/bin/sh
 
+print_batt() {
+  BAT=""
+  BAT_STATUS=$(acpitool | awk '/Battery/' | sed 's/^.*<//')
+
+  if [ "$BAT_STATUS" = "not available>" ];
+  then
+    BAT="no batt"
+  else
+    BAT="batt"
+  fi
+
+  echo -n " <- Bat: ${BAT} -> "
+}
+
 print_cpu() {
   PERCENT_CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}' | cut -d '.' -f 1)
   echo -n " <- CPU: ${PERCENT_CPU}% -> "
@@ -68,9 +82,10 @@ while :; do
 	fi
 	print_mem &
 	print_cpu &
-	print_bat $ACPI_DATA &
+	# print_bat $ACPI_DATA &
+  print_batt &
   print_uptime &
 	echo ""
 	I=$(( ( ${I} + 1 ) % 11 ))
-	sleep 3
+	sleep 10
 done
