@@ -5,6 +5,11 @@ print_cpu() {
   echo -n " <- CPU: ${PERCENT_CPU}% -> "
 }
 
+print_uptime() {
+  UP=$(uptime | awk '{printf " <- Uptime: %s %s -> ", $3, $4}' | sed 's/,//')
+  echo -n "${UP}"
+}
+
 print_mem() {
   MEM=`/usr/bin/free -m | grep ^Mem | awk '{printf "%i", $3 / $2 * 100}'`
 	echo -n " <- RAM: ${MEM}% -> "
@@ -64,6 +69,7 @@ while :; do
 	print_mem &
 	print_cpu &
 	print_bat $ACPI_DATA &
+  print_uptime &
 	echo ""
 	I=$(( ( ${I} + 1 ) % 11 ))
 	sleep 3
