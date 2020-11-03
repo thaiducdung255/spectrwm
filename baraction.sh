@@ -15,9 +15,9 @@ print_batt() {
     Full,)
       echo -n "⊣ Bat°: $PERCENT ⊢"
       ;;
-    *)
-      echo -n "⊣ No bat ⊢"
-      ;;
+    # *)
+    #   echo -n "⊣ No bat ⊢"
+    #   ;;
   esac
 }
 
