@@ -1,7 +1,6 @@
 #!/bin/sh
 
 print_batt() {
-  BAT="Bat"
   CHARGE_STATUS="$4"
   PERCENT=$(echo $5 | sed 's/\..*/%/')
   TIME_LEFT=$(echo $6 | cut -d ':' -f 1,2)
@@ -16,7 +15,7 @@ print_batt() {
     Full,)
       echo -n "⊣ Bat°: $PERCENT ⊢"
       ;;
-    \<,)
+    *)
       echo -n "⊣ No bat ⊢"
       ;;
   esac
@@ -38,8 +37,8 @@ print_mem() {
 }
 
 while :; do
-  # print_mem &
-  # print_cpu &
+  print_mem &
+  print_cpu &
   print_batt `acpitool` &
   print_uptime &
   echo ""
