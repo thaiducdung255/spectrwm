@@ -5,9 +5,9 @@ print_vol() {
   VOL_LEVEL=$2
   if [ "$VOL_STATUS" = "on" ];
   then
-    echo "+@fg=1;Vol: $2"
+    echo "+@fg=1;Vol: +@fg=1;$2"
   else
-    echo "+@fg=2;Vol: $2"
+    echo "+@fg=2;Vol: +@fg=1;$2"
   fi
 }
 
@@ -18,10 +18,10 @@ print_batt() {
 
   case $CHARGE_STATUS in
     Charging,)
-      echo -n "+@fg=1;Bat: $PERCENT +@fg=0;[+@fg=1;$TIME_LEFT+@fg=0;]"
+      echo -n "+@fg=1;Bat: +@fg=1;$PERCENT +@fg=0;[+@fg=1;$TIME_LEFT+@fg=0;]"
       ;;
     Discharging,)
-      echo -n "+@fg=2;Bat: $PERCENT +@fg=0;[+@fg=1;$TIME_LEFT+@fg=0;]" 
+      echo -n "+@fg=2;Bat: +@fg=1;$PERCENT +@fg=0;[+@fg=1;$TIME_LEFT+@fg=0;]" 
       ;;
     Full,)
       echo -n "+@fg=1;Bat: $PERCENT"
@@ -44,7 +44,7 @@ print_mem() {
   echo -n "+@fg=1;RAM: ${MEM}%+@fg=0;"
 }
 
-SLEEP_SEC=3
+SLEEP_SEC=5
 while :; do
   VOL_CMD=`amixer get Master | awk -F'[][]' 'END{ print $6, $2 }'`
 
