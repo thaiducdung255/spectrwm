@@ -5,7 +5,7 @@ print_vol() {
   VOL_LEVEL=$2
   case $VOL_STATUS in
     on)
-      echo "+@fg=0;⊣ +@fg=3;Vol: +@fg=1;$2 +@fg=0;⊢"
+      echo "+@fg=0;⊣ +@fg=1;Vol: +@fg=1;$2 +@fg=0;⊢"
       ;;
     off)
       echo "+@fg=0;⊣ +@fg=2;Vol: +@fg=1;$2 +@fg=0;⊢"
@@ -20,20 +20,20 @@ print_batt() {
 
   case $CHARGE_STATUS in
     Charging,)
-      echo -n "+@fg=0;⊣ +@fg=3;Bat: +@fg=1;$PERCENT +@fg=0;[+@fg=1;$TIME_LEFT+@fg=0;] +@fg=0;⊢"
+      echo -n "+@fg=0;⊣ +@fg=1;Bat: +@fg=1;$PERCENT +@fg=0;[+@fg=1;$TIME_LEFT+@fg=0;] +@fg=0;⊢"
       ;;
     Discharging,)
       echo -n "+@fg=0;⊣ +@fg=2;Bat: +@fg=1;$PERCENT +@fg=0;[+@fg=1;$TIME_LEFT+@fg=0;] +@fg=0;⊢" 
       ;;
     Full,)
-      echo -n "+@fg=0;⊣ +@fg=3;Bat: $PERCENT +@fg=0;⊢"
+      echo -n "+@fg=0;⊣ +@fg=1;Bat: $PERCENT +@fg=0;⊢"
       ;;
   esac
 }
 
 print_cpu() {
   PERCENT_CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage}' | cut -d '.' -f 1)
-  echo -n "+@fg=0;⊣ +@fg=3;CPU: ${PERCENT_CPU}%+@fg=0; +@fg=0;⊢"
+  echo -n "+@fg=0;⊣ +@fg=1;CPU: ${PERCENT_CPU}%+@fg=0; +@fg=0;⊢"
 }
 
 print_uptime() {
